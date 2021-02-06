@@ -20,10 +20,11 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   createPost = (newPost) => {
-    this.http.post<ResourceResponse>(`${this.baseUrl}/posts`, newPost).subscribe(response => {
-      this.posts.push(response.data);
-      this.postsUpdated.next([...this.posts]);
-    })
+    this.http.post<ResourceResponse>(`${this.baseUrl}/posts`, newPost)
+      .subscribe(response => {
+        this.posts.push(response.data);
+        this.postsUpdated.next([...this.posts]);
+      })
   }
 
   getPosts = () => {
