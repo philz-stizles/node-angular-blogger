@@ -1,3 +1,5 @@
+import { Subscription } from 'rxjs';
+import { PostService } from './../post.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '../posts.model';
 
@@ -7,11 +9,19 @@ import { Post } from '../posts.model';
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit {
-  @Input() posts: Post[] = []
+  posts: Post[] = [];
+  private postsSubscription: Subscription;
 
-  constructor() { }
+  constructor(private postService: PostService) {}
 
   ngOnInit(): void {
+    this.postService.getPosts()
+    this.postsSubscription = this.postService.getPostUpdateListener().subscribe(posts => {
+      this.posts = posts;
+    })
   }
 
+  ngOnDestroy() {
+    this.postsSubscription.unsubscribe();
+  }
 }
