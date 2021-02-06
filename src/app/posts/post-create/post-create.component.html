@@ -8,7 +8,8 @@
                 ngModel 
                 #title="ngModel" 
                 required
-                matInput placeholder="What is on your mind ..."/>
+                matInput 
+                placeholder="Post Title"/>
             <mat-error *ngIf="title.invalid">Please enter a post title</mat-error>
         </mat-form-field>
         <mat-form-field>
@@ -19,7 +20,8 @@
                 ngModel 
                 #content="ngModel" 
                 required
-                matInput placeholder="Do let us no the details..."></textarea>
+                matInput 
+                placeholder="Do let us no the details..."></textarea>
             <mat-error *ngIf="content.invalid">Please enter a post content</mat-error>
         </mat-form-field>
         <button type="submit" mat-raised-button mat-button color="primary">Save Post</button>

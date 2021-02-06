@@ -7,10 +7,4 @@ import { Post } from './posts/posts.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  posts: Post[] = [];
-
-  onAddPost(newPost) {
-    this.posts.push(newPost)
-    console.log(this.posts)
-  }
 }
