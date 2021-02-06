@@ -1,15 +1,39 @@
 <mat-card>
-    <form class="example-form">
-        <mat-form-field class="example-full-width">
-            <mat-label>Favorite food</mat-label>
-            <input matInput placeholder="Ex. Pizza" value="Sushi">
+    <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+        <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input 
+                type="text" 
+                name="title" 
+                ngModel 
+                #title="ngModel" 
+                required
+                matInput placeholder="What is on your mind ..."/>
+            <mat-error *ngIf="title.invalid">Please enter a post title</mat-error>
         </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-            <mat-label>Leave a comment</mat-label>
-            <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+        <mat-form-field>
+            <mat-label>Content</mat-label>
+            <textarea 
+                rows="6" 
+                name="content" 
+                ngModel 
+                #content="ngModel" 
+                required
+                matInput placeholder="Do let us no the details..."></textarea>
+            <mat-error *ngIf="content.invalid">Please enter a post content</mat-error>
         </mat-form-field>
-
-        <button mat-button color="primary">Primary</button>
+        <button type="submit" mat-raised-button mat-button color="primary">Save Post</button>
     </form>
 </mat-card>
+
+<!---<mat-card>
+    <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input type="text" [(ngModel)]="title" matInput placeholder="What is on your mind ..."/>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Content</mat-label>
+        <textarea rows="6" [(ngModel)]="content" matInput placeholder="Do let us no the details..."></textarea>
+    </mat-form-field>
+    <button (click)="onAddPost()" mat-raised-button mat-button color="primary">Save Post</button>
+</mat-card>-->
